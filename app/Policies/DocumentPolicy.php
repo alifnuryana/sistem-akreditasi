@@ -17,6 +17,12 @@ class DocumentPolicy
 
     public function view(User $user, Document $document): bool
     {
+        dd($user->major_id === $document->major_id);
+
+        if ($user->major_id === $document->major_id) {
+            return true;
+        }
+
         if ($document->user_id === $user->id) {
             return true;
         }
@@ -50,6 +56,10 @@ class DocumentPolicy
 
     public function forceDelete(User $user, Document $document): bool
     {
+        if ($user->id === $document->user_id) {
+            return true;
+        }
+
         return true;
     }
 }

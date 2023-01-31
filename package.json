@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "serve": "php artisan serve"
+        "serve": "@php artisan serve"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.0.0",

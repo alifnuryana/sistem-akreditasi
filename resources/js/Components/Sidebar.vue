@@ -6,7 +6,14 @@ import {
     TransitionChild,
     TransitionRoot,
 } from "@headlessui/vue";
-import {FolderIcon, HomeIcon, UsersIcon, XMarkIcon} from "@heroicons/vue/24/outline";
+import {
+    FolderIcon,
+    HomeIcon,
+    UsersIcon,
+    XMarkIcon,
+    DocumentIcon,
+    DocumentCheckIcon, DocumentTextIcon,
+} from "@heroicons/vue/24/outline";
 import ApplicationLogo from "../Components/ApplicationLogo.vue";
 import { usePage, Link } from "@inertiajs/vue3";
 
@@ -31,33 +38,41 @@ onMounted(() => {
     if (permissions.value.includes("access documents")) {
         addNavigation({
             name: "Dokumen",
-            href: route('documents.index'),
-            icon: FolderIcon,
-            current: route().current('documents.index'),
+            href: route("documents.index"),
+            icon: DocumentIcon,
+            current: route().current("documents.index"),
+        });
+    }
+    if (permissions.value.includes("verify document")) {
+        addNavigation({
+            name: "Verifikasi Dokumen",
+            href: route("verify.index"),
+            icon: DocumentCheckIcon,
+            current: route().current("verify.index"),
         });
     }
     if (permissions.value.includes("access subs")) {
         addNavigation({
             name: "Sub",
-            href: route('dashboard'),
+            href: route("subs.index"),
             icon: FolderIcon,
-            current: false,
+            current: route().current("subs.index"),
         });
     }
-    if (permissions.value.includes("access subs")) {
+    if (permissions.value.includes("access standards")) {
         addNavigation({
             name: "Standar",
-            href: route('dashboard'),
+            href: route("standard.index"),
             icon: FolderIcon,
-            current: false,
+            current: route().current("standard.index"),
         });
     }
     if (permissions.value.includes("access users")) {
         addNavigation({
             name: "Pengguna",
-            href: route('dashboard'),
+            href: route("users.index"),
             icon: UsersIcon,
-            current: false,
+            current: route().current("users.index"),
         });
     }
 });

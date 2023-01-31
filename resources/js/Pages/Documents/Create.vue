@@ -220,8 +220,9 @@ storeConfirmDialog.onConfirm(() => {
                             <div v-if="step === 2" :key="2">
                                 <div>
                                     <p class="mt-1 text-sm text-gray-500">
-                                        Use a permanent address where you can
-                                        receive mail.
+                                        Silahkan pilih standar dan sub yang
+                                        sesuai dengan dokumen yang akan di
+                                        upload.
                                     </p>
                                 </div>
                                 <div
@@ -273,9 +274,9 @@ storeConfirmDialog.onConfirm(() => {
                             <div v-if="step === 3" :key="3">
                                 <div>
                                     <p class="mt-1 text-sm text-gray-500">
-                                        We'll always let you know about
-                                        important changes, but you pick what
-                                        else you want to hear about.
+                                        Silahkan beri nama dokumen dan upload
+                                        file lampiran yang akan dimasukan ke
+                                        dalam sistem.
                                     </p>
                                 </div>
                                 <div

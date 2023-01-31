@@ -14,7 +14,7 @@ class Sub extends Model
         'description',
     ];
 
-    public function scopeByMajor($query, string $majorId)
+    public function scopeByMajor($query, string|number $majorId)
     {
         return $query->whereHas('documents', fn($document) => $document->where('major_id', '=', $majorId));
     }
@@ -42,5 +42,10 @@ class Sub extends Model
     public function documents()
     {
         return $this->hasMany(Document::class)->latest();
+    }
+
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class)->latest();
     }
 }

@@ -14,4 +14,14 @@ class Major extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
+
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class);
+    }
 }

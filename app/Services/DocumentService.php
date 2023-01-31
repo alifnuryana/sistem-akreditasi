@@ -50,4 +50,10 @@ class DocumentService
                 ->get();
         }
     }
+
+    public function deleteDocumentById(string $id)
+    {
+        Document::find($id)
+            ->delete();
+    }
 }

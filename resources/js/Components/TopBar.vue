@@ -2,13 +2,18 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { BellIcon, Bars3CenterLeftIcon } from "@heroicons/vue/24/outline";
 import SearchBox from "./SearchBox.vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 defineProps({
     modelValue: Boolean,
 });
 
 defineEmits(["update:modelValue"]);
+
+const user = computed(() => {
+    return usePage().props.auth.user;
+});
 </script>
 
 <template>
@@ -29,13 +34,6 @@ defineEmits(["update:modelValue"]);
                 <SearchBox class="w-full" />
             </div>
             <div class="ml-4 flex items-center md:ml-6">
-                <button
-                    type="button"
-                    class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    <BellIcon class="h-6 w-6" aria-hidden="true" />
-                </button>
-
                 <!-- Profile dropdown -->
                 <Menu as="div" class="relative ml-3">
                     <div>
@@ -44,7 +42,7 @@ defineEmits(["update:modelValue"]);
                         >
                             <img
                                 class="h-8 w-8 rounded-full"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                :src="`https://ui-avatars.com/api/?name=${user.name}`"
                                 alt=""
                             />
                         </MenuButton>
@@ -64,13 +62,13 @@ defineEmits(["update:modelValue"]);
                                 <Link
                                     as="div"
                                     method="GET"
-                                    href="#"
+                                    :href="route('profile.index')"
                                     :class="[
                                         active ? 'bg-gray-100' : '',
                                         'block cursor-pointer py-2 px-4 text-sm text-gray-700',
                                     ]"
                                 >
-                                    Profile Saya
+                                    Profile
                                 </Link>
                             </MenuItem>
                             <MenuItem v-slot="{ active }">

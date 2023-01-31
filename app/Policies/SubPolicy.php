@@ -12,7 +12,7 @@ class SubPolicy
 
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->can('access subs');
     }
 
     public function view(User $user, Sub $sub): bool
@@ -32,7 +32,7 @@ class SubPolicy
 
     public function delete(User $user, Sub $sub): bool
     {
-        return true;
+        return $user->can('delete sub');
     }
 
     public function restore(User $user, Sub $sub): bool
